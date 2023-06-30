@@ -1,0 +1,24 @@
+--Create a grocery store database
+CREATE TABLE my_store (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, color TEXT, quantity integer); 
+INSERT INTO my_store VALUES (1, "skirt", 15.99, "blue", 3);
+INSERT INTO my_store VALUES (2, "shirt", 12.99, "yellow", 8);
+INSERT INTO my_store VALUES (3, "socks", 5.99, "white", 12);
+INSERT INTO my_store VALUES (4, "skirt", 18.99, "purple", 7);
+INSERT INTO my_store VALUES (5, "jeans", 25.99, "blue", 14);
+INSERT INTO my_store VALUES (6, "joggers", 21.99, "black", 5);
+INSERT INTO my_store VALUES (7, "tank top", 11.99, "gray", 6);
+INSERT INTO my_store VALUES (8, "tank top", 11.99, "black", 6);
+INSERT INTO my_store VALUES (9, "tank top", 11.99, "red", 6);
+INSERT INTO my_store VALUES (10, "skirt", 18.99, "pink", 7);
+INSERT INTO my_store VALUES (11, "skirt", 18.99, "teal", 7);
+INSERT INTO my_store VALUES (12, "jeans", 25.99, "white", 8);
+INSERT INTO my_store VALUES (13, "jeans", 25.99, "black", 8);
+INSERT INTO my_store VALUES (14, "jeans", 25.99, "gold", 8);
+INSERT INTO my_store VALUES (15, "joggers", 21.99, "blue", 5);
+
+--display the database ordered by price. 
+SELECT * FROM my_store ORDER BY price desc;
+
+--what is the avg price of items in my store? 
+SELECT AVG(price) "avg item price"
+FROM my_store;
