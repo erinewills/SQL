@@ -1,0 +1,75 @@
+CREATE TABLE famousmusicaltheatreauthors (id INTEGER PRIMARY KEY,name TEXT, title TEXT, year INTEGER);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (1,"Rodgers and Hammerstein","Oklahoma",1943);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (2,"Rodgers and Hammerstein","Carousel",1945);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (3,"Rodgers and Hammerstein","State Fair",1945);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (4,"Rodgers and Hammerstein","South Pacific",1949);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (5,"Rodgers and Hammerstein","The King and I",1951);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (6,"Sondheim","West Side Story",1957);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (7,"Sondheim","Sweeney Todd",1979);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (8,"Sondheim","Company",1970);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (9,"Sondheim","Into the Woods",1987);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (10,"Sondheim","Sunday in the Park with George",1984);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (11,"Kander and Ebb","Cabaret",1966);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (12,"Kander and Ebb","Chicago",1975);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (13,"Kander and Ebb","Curtains",2006);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (14, "Rodgers and Hammerstein", "Sound of Music", 1959);
+INSERT into famousmusicaltheatreauthors 
+    VALUES (15, "Sondheim", "Follies", 1971);
+
+CREATE TABLE run_length (title_id INTEGER, performances INTEGER);
+INSERT into run_length
+    VALUES (11,1166);
+INSERT into run_length
+    VALUES (13,511);
+INSERT into run_length    
+    VALUES (12,936);
+INSERT into run_length    
+    VALUES (6,732);
+INSERT into run_length    
+    VALUES (7,557);
+INSERT into run_length    
+    VALUES (8,705);
+INSERT into run_length    
+    VALUES (9,765);
+INSERT into run_length    
+    VALUES (10,604);
+INSERT into run_length    
+    VALUES (1,2212);
+INSERT into run_length    
+    VALUES (2,890);
+INSERT into run_length    
+    VALUES (3,0);
+INSERT into run_length    
+    VALUES (4,1925);
+INSERT into run_length    
+    VALUES (5,1246);
+INSERT into run_length    
+    VALUES (15,522);
+INSERT into run_length    
+    VALUES (14,1443);
+
+--Join two tables listing title, author and number of performances in descending order.
+SELECT f.title, f.name, r.performances FROM famousmusicaltheatreauthors f
+LEFT OUTER JOIN run_length r
+ON f.id = r.title_id
+ORDER BY performances DESC;
+
+--Join two tables showing the author and sum of the production performances.
+SELECT f.name, SUM (r.performances) total FROM famousmusicaltheatreauthors f
+LEFT OUTER JOIN run_length r
+ON f.id = r.title_id
+GROUP by f.name;
