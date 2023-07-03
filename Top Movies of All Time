@@ -111,11 +111,23 @@ INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,
 INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,OverseasPct,Year) VALUES (98,'Madagascar: Escape 2 Africa','P/DW',603.90,180.00,0.30,423.90,0.70,2008);
 INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,OverseasPct,Year) VALUES (99,'Casino Royale','Sony',599.00,167.40,0.28,431.60,0.72,2006);
 INSERT INTO topmovies(Rank,Title,Studio,Worldwide,Domestic,DomesticPct,Overseas,OverseasPct,Year) VALUES (100,'Tangled','BV',591.80,200.80,0.34,391.00,0.66,2010);
+
+--display movies that grossed over 200 MIL domestically or 800 MIL worldwide. 
 SELECT * FROM topmovies WHERE domestic>200 OR overseas> 800;
+
+--display movies from Sony studios
 SELECT Title,Studio FROM topmovies WHERE studio="Sony";
+
+--display the top 15 movies in order by studio
 SELECT * FROM topmovies ORDER BY studio DESC LIMIT 15;
+
+--display the title, studio and domestic gross and group by studio.
 SELECT title,studio, domestic FROM topmovies GROUP BY studio;
+
+--count the number of movies that grossed worldwide over 900 MIL.
 SELECT COUNT(*) FROM topmovies WHERE worldwide > 900;
+
+--add a column that labels movies as high or low earners based on domestic earnings.
 SELECT title,studio,domestic, 
     CASE
         WHEN domestic > 500 THEN "high earnings"
